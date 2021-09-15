@@ -9,12 +9,9 @@ code = code.Init(k,n);
 
 %% Generate Decoder
 decoder = DECODER_AWGN_OSD;
-decoder = decoder.Init(G, 1, 2); % osd-2
+decoder = decoder.Init(G, 4, 3); % osd-2
 
-% chase
-decoderChase = DECODER_AWGN_CHASE_LIST;
-bitWidthChase = 6; 
-decoderChase = decoderChase.Init(bitWidthChase, decoder, code.K, code.N);
+
 %% Simulation Settings
 % over awgn channel
 G = G;
