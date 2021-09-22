@@ -2,6 +2,8 @@ OSD2DecodeRandomCode128_35;
 OSD2DecodeProjectedCode128_35;
 OSD3DecodeRandomCode128_35;
 OSD3DecodeProjectedCode128_35;
+OSD4DecodeRandomCode128_35;
+OSD4DecodeProjectedCode128_35;
 %%
 ax = gca;
 ax.FontWeight = 'bold';
@@ -10,12 +12,12 @@ ax.Box = 'on';
 ax.GridAlpha = 0.3;
 grid(ax,'on');
 
-axis([2.5 4 1e-4 1e-0]);
+axis([1.5 4 1e-4 1e-0]);
 xlabel('E_b/N_0 (dB)');ylabel('BLER');
 title('(128, 35)');
 legend;
 function OSD2DecodeRandomCode128_35
-displayName = 'random code osd-2';
+displayName = 'osd-2 random code';
 % OSD-2 Algorithm
 % Running time duration at this EbNo: 142.276s
 % Error frame number at this EbNo: 100
@@ -36,7 +38,7 @@ semilogy(EbNo, wer, '-o', 'Linewidth', 1.5,'DisplayName',displayName); hold on;
 end
 
 function OSD2DecodeProjectedCode128_35
-displayName = 'projected code osd-2';
+displayName = 'osd-2 projected code';
 % OSD-2 Algorithm
 % Running time duration at this EbNo: 128.6754s
 % Error frame number at this EbNo: 100
@@ -94,6 +96,45 @@ data = [...
  3.5  0.0003730331  0.0001865165
 3.75           NaN           NaN
    4           NaN           NaN
+];
+EbNo = data(:,1); wer = data(:,2); ber = data(:,3);
+semilogy(EbNo, wer, '-o', 'Linewidth', 1.5,'DisplayName',displayName); hold on;
+end
+
+function OSD4DecodeRandomCode128_35
+displayName = 'osd-4 random code';
+% OSD-4 Algorithm
+% Running time duration at this EbNo: 6265.6599s
+% Error frame number at this EbNo: 74
+% Eb/No = 2.5 dB
+% N = 128 K = 35
+% EbNo    wer    ber
+data = [...
+ 1.5     0.01423    0.007374
+1.75   0.0078906   0.0041897
+   2    0.003986   0.0020568
+2.25   0.0017228  0.00087239
+ 2.5  0.0009716387  0.0004948229
+
+];
+EbNo = data(:,1); wer = data(:,2); ber = data(:,3);
+semilogy(EbNo, wer, '-o', 'Linewidth', 1.5,'DisplayName',displayName); hold on;
+end
+
+function OSD4DecodeProjectedCode128_35
+displayName = 'osd-4 projected code';
+% OSD-2 Algorithm
+% Running time duration at this EbNo: 1910.477s
+% Error frame number at this EbNo: 42
+% Eb/No = 2.5 dB
+% N = 163 K = 35
+% EbNo    wer    ber
+data = [...
+ 1.5    0.018111   0.0088677
+1.75    0.012074   0.0060031
+   2   0.0066208   0.0032177
+2.25   0.0040479   0.0019904
+ 2.5   0.0022022   0.0011041
 ];
 EbNo = data(:,1); wer = data(:,2); ber = data(:,3);
 semilogy(EbNo, wer, '-o', 'Linewidth', 1.5,'DisplayName',displayName); hold on;
