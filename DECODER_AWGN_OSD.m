@@ -3,7 +3,7 @@ classdef DECODER_AWGN_OSD
         osdSetting;
     end
     methods
-        function obj = Init(obj,G,dH,orderL)
+        function obj = init(obj,G,dH,orderL)
             obj.osdSetting = setOsdDecoder(G, dH, orderL);
         end
         function [uEsti, vEsti] = decode(obj, y, sigma)
