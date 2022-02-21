@@ -1,4 +1,4 @@
-function [uEsti, vEsti] = osdDecoding(osdSetting, r)
+function [uEsti, vEsti, G1] = osdDecoding(osdSetting, r)
 % see the reference:
 % Soft-Decision Decoding of Linear Block Codes Based on Ordered Statistics
 % Trans. Information Theory 1995.
@@ -26,6 +26,7 @@ lambda2 = nan(1, n);
 lambda2(1:k) = indexColPivot;
 lambda2(k+1:n) = indexColFree;
 G1 = GTemp(:,lambda2);
+% Now G1 is the systematic form
 z = y(lambda2);
 % hard decision decoding
 message = (z(1:k) < 0);
@@ -71,7 +72,7 @@ else
     shiftIndexArray = shiftIndexCell{1,iPhaseMax};
     shiftIndex = shiftIndexArray(iListMax,:);
     vEsti(1:k) = a(1:k);
-    vEsti(shiftIndex) =  mod(a(shiftIndex)+1,2);
+    vEsti(shiftIndex) =  mod(a(shiftIndex)+1,2); % 2021/12/3 I forget why (a+1) here
     uEsti = vEsti(1:k);
     vEsti(k+1:n) = mod(uEsti * P,2);
 end
